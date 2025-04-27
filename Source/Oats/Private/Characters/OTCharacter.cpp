@@ -4,6 +4,7 @@
 #include "Characters/OTCharacter.h"
 
 #include "AbilitySystemComponent.h"
+#include "Characters/AttributeSets/OTAttributeSet.h"
 
 // Sets default values
 AOTCharacter::AOTCharacter()

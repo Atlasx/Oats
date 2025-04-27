@@ -5,12 +5,14 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
+#include "GameplayTagContainer.h"
 
 #include "OTCharacter.generated.h"
 
 class UAbilitySystemComponent;
+class UOTAttributeSet;
 
-// All characters inherit through this character class. Meant for rabbits and humans
+// All characters inherit through this character class. Meant for rabbits, humans, player
 
 UCLASS()
 class OATS_API AOTCharacter : public ACharacter, public IAbilitySystemInterface
@@ -21,8 +23,15 @@ public:
 	// Sets default values for this character's properties
 	AOTCharacter();
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Abilities)
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Abilities")
 	UAbilitySystemComponent* AbilitySystemComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Attributes")
+	UOTAttributeSet* AttributeSet;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tags")
+	FGameplayTagContainer CharacterTags;
 
 protected:
 	// Called when the game starts or when spawned

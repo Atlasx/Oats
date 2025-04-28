@@ -12,6 +12,8 @@ AOTCharacter::AOTCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+	AttributeSet = CreateDefaultSubobject<UOTAttributeSet>(TEXT("Attributes"));
 }
 
 // Called when the game starts or when spawned
@@ -38,4 +40,9 @@ void AOTCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 UAbilitySystemComponent* AOTCharacter::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
+}
+
+FGameplayTagContainer* AOTCharacter::GetCharacterTags()
+{
+	return &CharacterTags;
 }

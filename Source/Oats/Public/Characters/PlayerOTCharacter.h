@@ -17,6 +17,9 @@ class OATS_API APlayerOTCharacter : public AOTCharacter
 {
 	GENERATED_BODY()
 	
+public:
+	APlayerOTCharacter();
+
 protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh)

@@ -46,4 +46,5 @@ public:
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
+	FGameplayTagContainer* GetCharacterTags();
 };

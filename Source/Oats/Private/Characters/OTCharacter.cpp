@@ -16,27 +16,6 @@ AOTCharacter::AOTCharacter()
 	AttributeSet = CreateDefaultSubobject<UOTAttributeSet>(TEXT("Attributes"));
 }
 
-// Called when the game starts or when spawned
-void AOTCharacter::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AOTCharacter::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
-// Called to bind functionality to input
-void AOTCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-
 UAbilitySystemComponent* AOTCharacter::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
@@ -45,4 +24,9 @@ UAbilitySystemComponent* AOTCharacter::GetAbilitySystemComponent() const
 FGameplayTagContainer* AOTCharacter::GetCharacterTags()
 {
 	return &CharacterTags;
+}
+
+bool AOTCharacter::CanMove() const
+{
+	return !AbilitySystemComponent->HasMatchingGameplayTag(FGameplayTag::RequestGameplayTag(TEXT("Status.Stunned")));
 }

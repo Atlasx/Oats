@@ -8,6 +8,8 @@
 #include "PlayerOTCharacter.generated.h"
 
 class USkeletalMeshComponent;
+class UInputAction;
+struct FInputActionValue;
 
 /**
  * 
@@ -20,9 +22,20 @@ class OATS_API APlayerOTCharacter : public AOTCharacter
 public:
 	APlayerOTCharacter();
 
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+
 protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh)
 	USkeletalMeshComponent* FirstPersonMesh;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	UInputAction* MoveAction;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	UInputAction* LookAction;
+
+	void Move(const FInputActionValue& Value);
+
+	void Look(const FInputActionValue& Value);
 };
